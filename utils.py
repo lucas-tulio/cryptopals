@@ -103,3 +103,11 @@ def hex_to_ascii(input_string):
     num = int(num_str, 16)
     string += chr(num)
   return string
+
+def fixed_xor(hex_input, hex_key):
+  if len(str(hex_input)) != len(str(hex_key)):
+    print("Input string and key must be the same size")
+    return
+
+  # XOR
+  return hex_input ^ hex_key
