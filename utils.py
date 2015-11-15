@@ -1,3 +1,5 @@
+import string
+
 base64_table = {
   0 : "A",
   1 : "B",
@@ -111,3 +113,30 @@ def fixed_xor(hex_input, hex_key):
 
   # XOR
   return hex_input ^ hex_key
+
+def single_byte_xor(hex_str):
+
+  sentences = {}
+
+  # Try every number from 0 to 255
+  for i in range(0, 255):
+
+    # XOR each number against i
+    result = ""
+    for j in range(0, len(hex_str), 2):
+      num = '0x' + hex_str[j:j+2]
+      new_num = int(num, 16) ^ i
+      result += chr(new_num)
+
+    # Score the resulting sentence according to the number of uppercase/lowercase/space characters
+    score = 0
+    for character in result:
+      if character in string.ascii_lowercase or character in string.ascii_uppercase or character == ' ':
+        score += 1
+
+    sentences[result] = score
+
+  # Result: the sentence with the max score
+  message = max(sentences.keys(), key=(lambda k: sentences[k]))
+  return message
+

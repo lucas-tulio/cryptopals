@@ -1,5 +1,6 @@
 from utils import hex_to_base64
 from utils import fixed_xor
+from utils import single_byte_xor
 
 # 1. Hex to Base64
 
@@ -19,5 +20,12 @@ xor_expected_result = 0x746865206b696420646f6e277420706c6179
 xor_result = fixed_xor(xor_input, xor_key)
 assert xor_expected_result == xor_result
 print('1-2. Fixed XOR: passed')
+
+# 3. Single byte XOR
+hex_str = '1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736'
+sbx_expected_result = 'Cooking MC\'s like a pound of bacon'
+sbx_result = single_byte_xor(hex_str)
+assert sbx_expected_result == sbx_result
+print('1-3. Single-byte XOR: passed')
 
 print('All tests passed')
