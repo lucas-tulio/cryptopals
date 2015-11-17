@@ -108,9 +108,3 @@ def find_message(input_file):
         result = sentence
 
   return result
-
-
-
-
-
-
