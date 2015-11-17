@@ -34,7 +34,7 @@ print('1-3. Single-byte XOR: passed')
 
 # 1-4. Detect single-character XOR
 
-input_file = './files/sc-xor-input-file.txt'
+input_file = './files/1-4-input.txt'
 message = find_message(input_file)
 expected_message = 'Now that the party is jumping\n'
 assert message == expected_message
