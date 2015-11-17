@@ -2,6 +2,7 @@ from utils import hex_to_base64
 from utils import fixed_xor
 from utils import single_byte_xor
 from utils import find_message
+from repkeyxor import encrypt
 
 # 1-1. Hex to Base64
 
@@ -38,5 +39,15 @@ message = find_message(input_file)
 expected_message = 'Now that the party is jumping\n'
 assert message == expected_message
 print('1-4. Detect single-character XOR: passed')
+
+# 1-5. Repeating-key XOR
+
+rep_key_message = 'Burning \'em, if you ain\'t quick and nimble\nI go crazy when I hear a cymbal'
+rep_key = 'ICE'
+rep_key_expected_encrypt = '0b3637272a2b2e63622c2e69692a23693a2a3c6324202d623d63343c2a26226324272765272a282b2f20430a652e2c652a3124333a653e2b2027630c692b20283165286326302e27282f'
+
+encrypted_message = encrypt(rep_key_message, rep_key)
+assert encrypted_message == rep_key_expected_encrypt
+print('1-5. Repeating-key XOR: passed')
 
 print('All tests passed')
